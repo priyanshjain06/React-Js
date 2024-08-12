@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Card({ username, btnText = "visit me"  /* props */ /*username*/ }) {
-  console.log("value of username is:", username);  // "value of props is :"props.username  /*usename*/
+  console.log("value of username is:", username);  // "value of props is :"props.username  /*username*/
   return (
     <div className="relative h-[400px] w-[300px] rounded-md ">
       <img
