@@ -26,3 +26,13 @@ export default function ThemeBtn() {
         </label>
     );
 }
+
+
+// e.target:
+
+// Refers to the element that triggered the event, i.e., the element that the user actually interacted with (clicked, hovered, etc.).
+// This might be a child element of the element where the event listener is attached.
+// e.currentTarget:
+
+// Refers to the element to which the event listener is attached.
+// It remains consistent regardless of where the event originated within the child elements of the currentTarget.

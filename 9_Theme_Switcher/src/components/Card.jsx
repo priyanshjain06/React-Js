@@ -4,7 +4,7 @@ export default function Card() {
     return (
         <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="/">
-                <img className="p-8 rounded-t-lg" src="https://www.google.com/imgres?q=batman&imgurl=https%3A%2F%2Fcdn.mos.cms.futurecdn.net%2F2NBcYamXxLpvA77ciPfKZW-1200-80.jpg&imgrefurl=https%3A%2F%2Fwww.techradar.com%2Fhow-to%2Fhow-to-watch-the-batman-movies-in-order&docid=mCIus5EkF2Ax1M&tbnid=9UNJh79oYcRjaM&vet=12ahUKEwjM6_CEwe-HAxXsR2wGHSxFCG8QM3oECFwQAA..i&w=1200&h=680&hcb=2&ved=2ahUKEwjM6_CEwe-HAxXsR2wGHSxFCG8QM3oECFwQAA" alt="product_image1" />
+                <img className="p-8 rounded-t-lg" src="https://www.myimaginestore.com/media/catalog/product/cache/88160a44f062342c33c0de95969b1545/r/1/r1791_gps_41mm_midnight_aluminium_midnight_sport_loop_pdp_image_position-1__en-in.jpeg" alt="product_image1" />
             </a>
             <div className="px-5 pb-5">
                 <a href="/">
