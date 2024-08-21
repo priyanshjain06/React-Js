@@ -5,7 +5,6 @@ const initialState = {
 }
 
 
-
 export const todoSlice = createSlice({
     name: 'todo',
     initialState,
@@ -13,12 +12,12 @@ export const todoSlice = createSlice({
         addTodo: (state, action) => {
             const todo = {
                 id: nanoid(), 
-                text: action.payload
+                text: action.payload // it will bring  info about the event being occured
             }
             state.todos.push(todo)
         },
         removeTodo: (state, action) => {
-            /*state.todos =*/ state.todos.filter((todo) => todo.id !== action.payload )
+            state.todos = state.todos.filter((todo) => todo.id !== action.payload )
         },
     }
 })
@@ -26,3 +25,10 @@ export const todoSlice = createSlice({
 export const {addTodo, removeTodo} = todoSlice.actions
 
 export default todoSlice.reducer
+
+// action.payload contains the text for the new to-do item. For example, if you dispatch addTodo("Buy milk"), the payload would be "Buy milk", and the new to-do item will have "Buy milk" as its text.
+
+// state.todos = state.todos.filter((todo) => todo.id !== action.payload )
+
+
+// Here, action.payload contains the id of the to-do item that should be removed. For example, if you dispatch removeTodo(1), the payload would be 1, and the to-do item with id equal to 1 would be removed from the todos array.
