@@ -42,3 +42,6 @@ function Todos() {
 }
 
 export default Todos
+
+// use selector
+//  It provides a way to access the current state of the store within your component, enabling you to use that state as props or within the component's logic.
