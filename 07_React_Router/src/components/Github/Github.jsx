@@ -22,6 +22,7 @@ function Github() {
 
 export default Github
 
+//REVIEW to use the loader in main.jsx 
 export const githubInfoLoader = async () => {
     const response = await fetch('https://api.github.com/users/priyanshjain06')
     return response.json()
