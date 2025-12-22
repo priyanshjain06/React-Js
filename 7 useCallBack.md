@@ -7,17 +7,21 @@ In React:
    * Using functions in dependency arrays (e.g., `useEffect`, `useMemo`)
    * Optimizing performance
 
+---
+
 ## 🔧 Syntax
 
-```js
+```javascript
 const memoizedCallback = useCallback(() => {
   // Your function code
 }, [dependencies]);
 ```
 
+---
+
 ## ✅ Basic Example
 
-```js
+```javascript
 import { useCallback, useState } from "react";
 
 function Counter() {
@@ -34,11 +38,13 @@ function Counter() {
 * `increment` is memoized.
 * It will **not be recreated** on every render unless dependencies change (in this case, there are none).
 
+---
+
 ## 🧠 Why Use It?
 
 ### 1. **Prevent unnecessary re-renders** of child components
 
-```js
+```javascript
 <Child onClick={handleClick} />
 ```
 
@@ -46,7 +52,7 @@ If `handleClick` is not memoized, `Child` may re-render even when it doesn't nee
 
 ### 2. **Stable function references** in dependency arrays
 
-```js
+```javascript
 useEffect(() => {
   someFunction();
 }, [someFunction]);
@@ -54,9 +60,60 @@ useEffect(() => {
 
 If `someFunction` is not memoized, this effect might run more often than necessary.
 
+---
+
 ## ⚠️ When NOT to use it?
 
 Don't use `useCallback` **unless** you're optimizing a specific performance issue. It adds overhead and doesn't always make things faster.
+
+---
+
+## When `useCallback` can make things SLOW
+
+### 1️⃣ When the function is cheap and not reused
+
+```javascript
+const handleClick = useCallback(() => {
+  setCount(count + 1);
+}, [count]);
+```
+
+❌ **Problem:**
+* Function creation is already cheap
+* `useCallback` adds memory usage
+* React must compare dependency array every render
+
+👉 **Net result:** more work than benefit
+
+### 2️⃣ When dependencies change frequently
+
+```javascript
+useCallback(() => {
+  doSomething(a, b, c);
+}, [a, b, c]);
+```
+
+If `a, b, c` change often:
+* New function is created anyway
+* `useCallback` becomes useless
+* You still pay its overhead
+
+### 3️⃣ When NOT passing function to child components
+
+```javascript
+const handleSubmit = useCallback(() => {
+  console.log("submit");
+}, []);
+```
+
+If:
+* Function is used only inside the same component
+* Not a dependency of `useEffect`
+* Not passed to memoized child
+
+👉 `useCallback` does nothing useful
+
+---
 
 ## 📌 Comparison: `useCallback` vs `useMemo`
 
@@ -64,6 +121,8 @@ Don't use `useCallback` **unless** you're optimizing a specific performance issu
 |------|-----------|----------|
 | `useCallback` | A **function** | Event handlers, callbacks |
 | `useMemo` | A **value/result** | Expensive computations |
+
+---
 
 ## 🧠 Summary
 

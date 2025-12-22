@@ -1,10 +1,16 @@
+  import { useRef } from 'react';
 
-function App() {
-  
+  function App() {
+    const inputRef = useRef();
 
-  return (
-      <h1>Hello World</h1>
-  )
-}
+    const focusInput = () => {
+      inputRef.current.focus(); // Accesses the DOM node
+    };
 
-export default App
+    return (
+      <div>
+        <input ref={inputRef} type="text" />
+        <button onClick={focusInput}>Focus Input</button>
+      </div>
+    );
+  }
