@@ -57,8 +57,12 @@ useEffect(() => {
   someFunction();
 }, [someFunction]);
 ```
-
 If `someFunction` is not memoized, this effect might run more often than necessary.
+
+---
+### 3. **When useCallBack function is dependency of useEffect**
+ Refer to folder 5 password generator !! 
+  
 
 ---
 
