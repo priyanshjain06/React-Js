@@ -45,12 +45,14 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="user/:userid" element={<User />} />
+      //REVIEW -  we catch user id by useparams hook in router dom
       <Route loader={githubInfoLoader} path="github" element={<Github />} />
       //REVIEW loader see github component code
     </Route>
   )
 );
 
+//REVIEW -  
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />

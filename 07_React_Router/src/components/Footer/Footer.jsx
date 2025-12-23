@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-
+//REVIEW -we use link to allow page change  from home to about etc
+ 
 export default function Footer() {
     return (
         <footer className="bg-white border-y">

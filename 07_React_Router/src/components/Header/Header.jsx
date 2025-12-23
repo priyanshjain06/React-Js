@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link, NavLink} from 'react-router-dom'
+//REVIEW -  to use nav link we need conditional rendering 
 
 export default function Header() {
     return (
