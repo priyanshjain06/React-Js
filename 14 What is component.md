@@ -180,4 +180,86 @@ function Child({ name }) {
 }
 ```
 
-> 💡 **Golden Rule**: Props flow DOWN, events flow UP!
+> 💡 **Golden Rule**: Props flow DOWN, events flow UP!  
+
+# ⚛️ Props vs State in React
+
+## 1️⃣ Core Definition (REAL Difference)
+
+- **Props** → data passed from parent to child
+- **State** → data owned and managed by the component itself
+
+---
+
+## 2️⃣ Technical Difference (Most Important)
+
+| Aspect | Props | State |
+|--------|-------|-------|
+| **Ownership** | Parent component | Same component |
+| **Mutability** | ❌ Read-only | ✅ Mutable via setter |
+| **Who changes it** | Parent only | Component itself |
+| **Direction** | Top → Down | Internal |
+| **Re-render** | When parent updates | When setter is called |
+
+---
+
+## 3️⃣ Props Example
+
+```jsx
+function Parent() {
+  return <Child name="Priyansh" />;
+}
+
+function Child({ name }) {
+  return <h1>{name}</h1>;
+}
+```
+
+✔ `Child` cannot modify `name`
+
+---
+
+## 3️⃣ State Example
+
+```jsx
+function Counter() {
+  const [count, setCount] = React.useState(0);
+
+  return (
+    <>
+      <p>{count}</p>
+      <button onClick={() => setCount(count + 1)}>+</button>
+    </>
+  );
+}
+```
+
+✔ Component controls `count`
+
+---
+
+## 4️⃣ Passing State as Props (Very Common)
+
+```jsx
+function Parent() {
+  const [count, setCount] = React.useState(0);
+  return <Child count={count} />;
+}
+```
+
+📌 State lives in **parent**  
+📌 Child receives it as **props**
+
+---
+
+## 5️⃣ Can Props Become State?
+
+**Yes** — but only if needed.
+
+```jsx
+function Child({ value }) {
+  const [localValue, setLocalValue] = React.useState(value);
+}
+```
+
+⚠️ **Usually an anti-pattern** unless required.
